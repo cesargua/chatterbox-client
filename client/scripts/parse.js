@@ -8,9 +8,38 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // TODO: send a request to the Parse API to save the message
+    //use post
+    //POST https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/:campus
+
+    $.ajax({
+      url: Parse.server,
+      type: 'POST',
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+      success: successCB,
+      error: errorCB || function(error){
+        console.error('chatterbox: Failed to send message', error);
+      }
+    })
+    // $.ajax({
+    //   // This is the url you should use to communicate with the API server.
+    //   url: 'https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/CAMPUS',
+    //   type: 'POST',
+    //   data: JSON.stringify(message),
+    //   contentType: 'application/json',
+    //   success: function (data) {
+    //     console.log('chatterbox: Message sent');
+    //   },
+    //   error: function (data) {
+    //     // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
+    //     console.error('chatterbox: Failed to send message', data);
+    //   },
+    // });
+
   },
 
   readAll: function(successCB, errorCB = null) {
+    //GET https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/:campus
     $.ajax({
       url: Parse.server,
       type: 'GET',
@@ -22,5 +51,4 @@ var Parse = {
       }
     });
   }
-
 };
