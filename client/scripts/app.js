@@ -15,12 +15,15 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
 
+
+
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
-    // TODO: Make sure the app loads data from the API
+    //TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
+        //use parse get here?
   },
 
   fetch: function(callback = ()=>{}) {
@@ -29,7 +32,14 @@ var App = {
       console.log(data);
 
       // TODO: Use the data to update Messages and Rooms
+      //call
+      Messages.add(data);
+      //Rooms.add(data)
+
       // and re-render the corresponding views.
+      //call mesagesView render here?
+      
+       //use parse get here?
     });
   },
 
